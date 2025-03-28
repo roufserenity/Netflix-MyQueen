@@ -1,0 +1,440 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Netflix Movies Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+    <link rel="icon" href="src\images\iconpage\favicon.ico" type="image/x-icon"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: #fff;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #999;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #444;
+        }
+        .dropdown-content.show {
+            display: block;
+        }
+        .notification {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background-color: #333;
+            color: white;
+            min-width: 300px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .notification p {
+            padding: 12px 16px;
+            border-bottom: 1px solid #444;
+        }
+        .notification p:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <header class="flex items-center justify-between p-4 bg-black bg-opacity-50">
+        <div class="flex items-center space-x-4">
+            <i class="fas fa-bars text-white cursor-pointer md:hidden" onclick="toggleMobileMenu()"></i>
+            <img alt="Netflix Logo" class="h-8" src="src\images\homepage\netflix_logo.png">
+            <nav class="hidden md:flex space-x-4">
+                <a class="text-white hover:text-gray-400" href="index.html">Home</a>
+                <a class="text-white hover:text-gray-400" href="series.html">Series</a>
+                <a class="text-white hover:text-gray-400" href="movies.html">Movies</a>
+                <a class="text-white hover:text-gray-400" href="newsandpopular.html">News and Popular</a>
+                <a class="text-white hover:text-gray-400" href="mylist.html">My List</a>
+            </nav>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <i class="fas fa-search text-white cursor-pointer" onclick="toggleSearchNotification()"></i>
+                <div class="notification" id="searchNotification">
+                    <p>gada siapa siapa kecuali aku.me love you
+                      ~R
+                    </p>
+                </div>
+            </div>
+            <i class="fas fa-bell text-white cursor-pointer" onclick="toggleNotification()"></i>
+            <div class="notification" id="notificationMenu">
+                <p>Semakin Hari Semakin Cantik Sih Kamu</p>
+                <p>Aku Cemburu Kamu Post Foto Nanti Ada Yang Suka Kamu</p>
+                <p>I Love You Hehe >3</p>
+            </div>
+            <div class="dropdown">
+                <img alt="User Avatar" class="h-8 w-8 rounded-full cursor-pointer" onclick="toggleDropdown()" src="src\images\homepage\user_avatar.png">
+                <div class="dropdown-content bg-gray-800 text-white rounded-md" id="dropdownMenu">
+                    <a href="#">Accounts</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="dropdown md:hidden">
+        <div class="dropdown-content bg-gray-800 text-white rounded-md" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="series.html">Series</a>
+            <a href="movies.html">Movies</a>
+            <a href="newsandpopular.html">News and Popular</a>
+            <a href="mylist.html">My List</a>
+        </div>
+    </div>
+    </header>
+    <div class="dropdown md:hidden">
+        <div class="dropdown-content bg-gray-800 text-white rounded-md" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="series.html">Series</a>
+            <a href="movies.html">Movies</a>
+            <a href="newsandpopular.html">News and Popular</a>
+            <a href="mylist.html">My List</a>
+        </div>
+    </div>
+  </header>
+  <main class="relative">
+   <section class="bg-black py-8">
+    <div class="container mx-auto px-4">
+     <h2 class="text-xl font-bold mb-4">
+      Movies
+     </h2>
+     <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+      <div class="text-center">
+       <img alt="Placeholder Image 1" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder1.png" onclick="openModal('video1')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 2" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder2.png" onclick="openModal('video2')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 3" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder3.png" onclick="openModal('video3')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 4" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder4.png" onclick="openModal('video4')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 5" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder5.png" onclick="openModal('video5')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 6" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder6.png" onclick="openModal('video6')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 7" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder7.png" onclick="openModal('video7')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 8" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder8.png" onclick="openModal('video8')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 9" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder9.png" onclick="openModal('video9')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 10" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder10.png" onclick="openModal('video10')"/>
+      </div>
+      <div class="text-center">
+       <img alt="Placeholder Image 11" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder11.png" onclick="openModal('video11')"/>
+      </div>
+      <div class="text-center">
+        <img alt="Placeholder Image 12" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder12.png" onclick="openModal('video12')"/>
+       </div>
+       <div class="text-center">
+        <img alt="Placeholder Image 13" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder13.png" onclick="openModal('video13')"/>
+       </div>
+       <div class="text-center">
+        <img alt="Placeholder Image 14" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder14.png" onclick="openModal('video14')"/>
+       </div>
+       <div class="text-center">
+        <img alt="Placeholder Image 15" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder15.png" onclick="openModal('video15')"/>
+       </div>
+       <div class="text-center">
+        <img alt="Placeholder Image 16" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder16.png" onclick="openModal('video16')"/>
+       </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <div class="modal" id="video1">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video1')">&times;</span>
+    <video id="video1-player" controls onended="closeModal('video1')">
+     <source src="src\videos\moviespage\video1.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video2">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video2')">&times;</span>
+    <video id="video2-player" controls onended="closeModal('video2')">
+     <source src="src\videos\moviespage\video2.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video3">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video3')">&times;</span>
+    <video id="video3-player" controls onended="closeModal('video3')">
+     <source src="src\videos\moviespage\video3.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video4">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video4')">&times;</span>
+    <video id="video4-player" controls onended="closeModal('video4')">
+     <source src="src\videos\moviespage\video4.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video5">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video5')">&times;</span>
+    <video id="video5-player" controls onended="closeModal('video5')">
+     <source src="src\videos\moviespage\video5.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video6">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video6')">&times;</span>
+    <video id="video6-player" controls onended="closeModal('video6')">
+     <source src="src\videos\moviespage\video6.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video7">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video7')">&times;</span>
+    <video id="video7-player" controls onended="closeModal('video7')">
+     <source src="src\videos\moviespage\video7.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video8">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video8')">&times;</span>
+    <video id="video8-player" controls onended="closeModal('video8')">
+     <source src="src\videos\moviespage\video8.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video9">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video9')">&times;</span>
+    <video id="video9-player" controls onended="closeModal('video9')">
+     <source src="src\videos\moviespage\video9.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video10">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video10')">&times;</span>
+    <video id="video10-player" controls onended="closeModal('video10')">
+     <source src="src\videos\moviespage\video10.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+   </div>
+  </div>
+  <div class="modal" id="video11">
+   <div class="modal-content">
+    <span class="close" onclick="closeModal('video11')">&times;</span>
+    <video id="video11-player" controls onended="closeModal('video11')">
+     <source src="src\videos\moviespage\video11.mp4" type="video/mp4"/>
+     Your browser does not support the video tag.
+    </video>
+</div>
+</div>
+<div class="modal" id="video12">
+ <div class="modal-content">
+  <span class="close" onclick="closeModal('video12')">&times;</span>
+  <video id="video12-player" controls onended="closeModal('video12')">
+   <source src="src\videos\moviespage\video12.mp4" type="video/mp4"/>
+   Your browser does not support the video tag.
+  </video>
+ </div>
+</div>
+<div class="modal" id="video13">
+ <div class="modal-content">
+  <span class="close" onclick="closeModal('video13')">&times;</span>
+  <video id="video13-player" controls onended="closeModal('video13')">
+   <source src="src\videos\moviespage\video13.mp4" type="video/mp4"/>
+   Your browser does not support the video tag.
+  </video>
+ </div>
+</div>
+<div class="modal" id="video14">
+ <div class="modal-content">
+  <span class="close" onclick="closeModal('video14')">&times;</span>
+  <video id="video14-player" controls onended="closeModal('video14')">
+   <source src="src\videos\moviespage\video14.mp4" type="video/mp4"/>
+   Your browser does not support the video tag.
+  </video>
+ </div>
+</div>
+<div class="modal" id="video15">
+    <div class="modal-content">
+     <span class="close" onclick="closeModal('video15')">&times;</span>
+     <video id="video15-player" controls onended="closeModal('video15')">
+      <source src="src\videos\moviespage\video15.mp4" type="video/mp4"/>
+      Your browser does not support the video tag.
+     </video>
+    </div>
+   </div>
+<div class="modal" id="video16">
+    <div class="modal-content">
+     <span class="close" onclick="closeModal('video16')">&times;</span>
+     <video id="video16-player" controls onended="closeModal('video16')">
+      <source src="src\videos\moviespage\video16.mp4" type="video/mp4"/>
+      Your browser does not support the video tag.
+     </video>
+    </div>
+   </div>
+  <script>
+   function openModal(videoId) {
+        document.getElementById(videoId).style.display = "block";
+        var video = document.getElementById(videoId + "-player");
+        video.play();
+    }
+
+    function closeModal(videoId) {
+        var modal = document.getElementById(videoId);
+        var video = modal.querySelector("video");
+        video.pause();
+        video.currentTime = 0;
+        modal.style.display = "none";
+    }
+
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            if (dropdownMenu.classList.contains("show")) {
+                dropdownMenu.classList.remove("show");
+            } else {
+                dropdownMenu.classList.add("show");
+            }
+        }
+
+        function toggleNotification() {
+            var notificationMenu = document.getElementById("notificationMenu");
+            if (notificationMenu.style.display === "block") {
+                notificationMenu.style.display = "none";
+            } else {
+                notificationMenu.style.display = "block";
+            }
+        }
+
+        function toggleSearchNotification() {
+            var searchNotification = document.getElementById("searchNotification");
+            if (searchNotification.style.display === "block") {
+                searchNotification.style.display = "none";
+            } else {
+                searchNotification.style.display = "block";
+            }
+        }
+
+        function toggleMobileMenu() {
+            var mobileMenu = document.getElementById("mobileMenu");
+            if (mobileMenu.classList.contains("show")) {
+                mobileMenu.classList.remove("show");
+            } else {
+                mobileMenu.classList.add("show");
+            }
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.cursor-pointer')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+                var notifications = document.getElementsByClassName("notification");
+                for (var i = 0; i < notifications.length; i++) {
+                    var openNotification = notifications[i];
+                    if (openNotification.style.display === "block") {
+                        openNotification.style.display = "none";
+                    }
+                }
+                var mobileMenus = document.getElementsByClassName("mobile-menu");
+                for (var i = 0; i < mobileMenus.length; i++) {
+                    var openMobileMenu = mobileMenus[i];
+                    if (openMobileMenu.classList.contains("show")) {
+                        openMobileMenu.classList.remove("show");
+                    }
+                }
+            }
+        }
+
+    document.querySelectorAll('video').forEach(video => {
+        video.addEventListener('ended', function() {
+            closeModal(video.parentElement.parentElement.id);
+        });
+    });
+    </script>
+  </body>
+</html>

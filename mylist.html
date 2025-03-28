@@ -1,0 +1,241 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Netflix My List Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link rel="icon" href="src\images\iconpage\favicon.ico" type="image/x-icon"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #444;
+        }
+        .dropdown-content.show {
+            display: block;
+        }
+        .notification {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background-color: #333;
+            color: white;
+            min-width: 300px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .notification p {
+            padding: 12px 16px;
+            border-bottom: 1px solid #444;
+        }
+        .notification p:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <header class="flex items-center justify-between p-4 bg-black bg-opacity-50">
+        <div class="flex items-center space-x-4">
+            <i class="fas fa-bars text-white cursor-pointer md:hidden" onclick="toggleMobileMenu()"></i>
+            <img alt="Netflix Logo" class="h-8" src="src\images\homepage\netflix_logo.png">
+            <nav class="hidden md:flex space-x-4">
+                <a class="text-white hover:text-gray-400" href="index.html">Home</a>
+                <a class="text-white hover:text-gray-400" href="series.html">Series</a>
+                <a class="text-white hover:text-gray-400" href="movies.html">Movies</a>
+                <a class="text-white hover:text-gray-400" href="newsandpopular.html">News and Popular</a>
+                <a class="text-white hover:text-gray-400" href="mylist.html">My List</a>
+            </nav>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <i class="fas fa-search text-white cursor-pointer" onclick="toggleSearchNotification()"></i>
+                <div class="notification" id="searchNotification">
+                    <p>gada siapa siapa kecuali aku.me love you
+                      ~R
+                    </p>
+                </div>
+            </div>
+            <i class="fas fa-bell text-white cursor-pointer" onclick="toggleNotification()"></i>
+            <div class="notification" id="notificationMenu">
+                <p>Semakin Hari Semakin Cantik Sih Kamu</p>
+                <p>Aku Cemburu Kamu Post Foto Nanti Ada Yang Suka Kamu</p>
+                <p>I Love You Hehe >3</p>
+            </div>
+            <div class="dropdown">
+                <img alt="User Avatar" class="h-8 w-8 rounded-full cursor-pointer" onclick="toggleDropdown()" src="src\images\homepage\user_avatar.png">
+                <div class="dropdown-content bg-gray-800 text-white rounded-md" id="dropdownMenu">
+                    <a href="#">Accounts</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="dropdown md:hidden">
+        <div class="dropdown-content bg-gray-800 text-white rounded-md" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="series.html">Series</a>
+            <a href="movies.html">Movies</a>
+            <a href="newsandpopular.html">News and Popular</a>
+            <a href="mylist.html">My List</a>
+        </div>
+    </div>
+  </header>
+  <main class="relative">
+   <section class="bg-black py-8">
+    <div class="container mx-auto px-4">
+     <h2 class="text-xl font-bold mb-4">
+     List Account
+     </h2>
+     <div class="mb-8">
+      <table class="table-auto w-full text-left">
+       <thead>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="border px-4 py-2 flex items-center">
+          <img alt="Instagram Icon" class="h-6 w-6" src="src\images\mylistpage\instagram_icon.png"/>
+          <span class="ml-2">
+           Instagram
+          </span>
+         </td>
+         <td class="border px-4 py-2">
+          <a class="text-blue-500 hover:underline" href="https://www.instagram.com/helminana177" target="_blank">
+           @helminana177
+          </a>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <div>
+      <table class="table-auto w-full text-left">
+       <thead>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="border px-4 py-2 flex items-center">
+          <img alt="Instagram Icon" class="h-6 w-6" src="src\images\mylistpage\instagram_icon.png"/>
+          <span class="ml-2">
+           Instagram
+          </span>
+         </td>
+         <td class="border px-4 py-2">
+          <a class="text-blue-500 hover:underline" href="https://www.instagram.com/roufdarkside" target="_blank">
+           @roufdarkside
+          </a>
+         </td>
+        </tr>
+        <tr>
+         <td class="border px-4 py-2 flex items-center">
+          <img alt="Instagram Icon" class="h-6 w-6" src="src\images\mylistpage\instagram_icon.png"/>
+          <span class="ml-2">
+           Instagram
+          </span>
+         </td>
+         <td class="border px-4 py-2">
+          <a class="text-blue-500 hover:underline" href="https://www.instagram.com/roufserenity" target="_blank">
+            @roufserenity
+          </a>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </section>
+   <script>
+    function toggleDropdown() {
+        var dropdownMenu = document.getElementById("dropdownMenu");
+        if (dropdownMenu.classList.contains("show")) {
+            dropdownMenu.classList.remove("show");
+        } else {
+            dropdownMenu.classList.add("show");
+        }
+    }
+
+    function toggleNotification() {
+        var notificationMenu = document.getElementById("notificationMenu");
+        if (notificationMenu.style.display === "block") {
+            notificationMenu.style.display = "none";
+        } else {
+            notificationMenu.style.display = "block";
+        }
+    }
+
+    function toggleSearchNotification() {
+        var searchNotification = document.getElementById("searchNotification");
+        if (searchNotification.style.display === "block") {
+            searchNotification.style.display = "none";
+        } else {
+            searchNotification.style.display = "block";
+        }
+    }
+
+    function toggleMobileMenu() {
+        var mobileMenu = document.getElementById("mobileMenu");
+        if (mobileMenu.classList.contains("show")) {
+            mobileMenu.classList.remove("show");
+        } else {
+            mobileMenu.classList.add("show");
+        }
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.cursor-pointer')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+            var notifications = document.getElementsByClassName("notification");
+            for (var i = 0; i < notifications.length; i++) {
+                var openNotification = notifications[i];
+                if (openNotification.style.display === "block") {
+                    openNotification.style.display = "none";
+                }
+            }
+            var mobileMenus = document.getElementsByClassName("mobile-menu");
+            for (var i = 0; i < mobileMenus.length; i++) {
+                var openMobileMenu = mobileMenus[i];
+                if (openMobileMenu.classList.contains("show")) {
+                    openMobileMenu.classList.remove("show");
+                }
+            }
+        }
+    }
+    </script>
+ </body>
+</html>
