@@ -1,4 +1,4 @@
-# Netflix For My Queen
+# Netflix-MyQueen
 
 # 🚫 REPOSITORI PRIBADI - JANGAN FORK ATAU DUPLIKASI ❌
 
