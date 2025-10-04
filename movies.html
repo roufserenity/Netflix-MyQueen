@@ -3,11 +3,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Netflix Movies Page
+   Netflix Movies
   </title>
   <script src="https://cdn.tailwindcss.com">
   </script>
-    <link rel="icon" href="src\images\iconpage\favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="src\images\iconpage\netflix.ico" type="image/x-icon"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
    body {
@@ -96,7 +96,7 @@
     <header class="flex items-center justify-between p-4 bg-black bg-opacity-50">
         <div class="flex items-center space-x-4">
             <i class="fas fa-bars text-white cursor-pointer md:hidden" onclick="toggleMobileMenu()"></i>
-            <img alt="Netflix Logo" class="h-8" src="src\images\homepage\netflix_logo.png">
+            <img alt="Netflix Logo" class="h-8" src="src\images\iconpage\netflix_logo.png">
             <nav class="hidden md:flex space-x-4">
                 <a class="text-white hover:text-gray-400" href="index.html">Home</a>
                 <a class="text-white hover:text-gray-400" href="series.html">Series</a>
@@ -121,7 +121,7 @@
                 <p>I Love You Hehe >3</p>
             </div>
             <div class="dropdown">
-                <img alt="User Avatar" class="h-8 w-8 rounded-full cursor-pointer" onclick="toggleDropdown()" src="src\images\homepage\user_avatar.png">
+                <img alt="User Avatar" class="h-8 w-8 rounded-full cursor-pointer" onclick="toggleDropdown()" src="src\images\iconpage\user_avatar.png">
                 <div class="dropdown-content bg-gray-800 text-white rounded-md" id="dropdownMenu">
                     <a href="#">Accounts</a>
                     <a href="#">Settings</a>
@@ -228,6 +228,9 @@
        </div>
        <div class="text-center">
         <img alt="Placeholder Image 24" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder24.png" onclick="openModal('video24')"/>
+       </div>
+       <div class="text-center">
+        <img alt="Placeholder Image 25" class="w-full h-auto cursor-pointer" src="src\images\moviespage\placeholder25.png" onclick="openModal('video25')"/>
        </div>
      </div>
     </div>
@@ -435,7 +438,7 @@
     <div class="modal-content">
      <span class="close" onclick="closeModal('video23')">&times;</span>
      <video id="video23-player" controls onended="closeModal('video23')">
-      <source src="src\videos\moviespage\video22.mp4" type="video/mp4"/>
+      <source src="src\videos\moviespage\video23.mp4" type="video/mp4"/>
       Your browser does not support the video tag.
      </video>
      </div>
@@ -445,6 +448,15 @@
      <span class="close" onclick="closeModal('video24')">&times;</span>
      <video id="video24-player" controls onended="closeModal('video24')">
       <source src="src\videos\moviespage\video24.mp4" type="video/mp4"/>
+      Your browser does not support the video tag.
+     </video>
+     </div>
+    </div>
+   <div class="modal" id="video25">
+    <div class="modal-content">
+     <span class="close" onclick="closeModal('video25')">&times;</span>
+     <video id="video24-player" controls onended="closeModal('video25')">
+      <source src="src\videos\moviespage\video25.mp4" type="video/mp4"/>
       Your browser does not support the video tag.
      </video>
      </div>
